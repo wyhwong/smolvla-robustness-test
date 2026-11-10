@@ -1,0 +1,52 @@
+[project]
+name = "smolvla-robustness-test"
+version = "0.1.0"
+description = "Final project for CS8001-OPA OMSCS"
+readme = "README.md"
+requires-python = ">=3.12, <3.13"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "lerobot[training,smolvla]==0.6.1",
+    "torch>=2.11.0",
+    "torchvision>=0.26.0",
+    "ffmpeg>=1.4",
+    "torchcodec>=0.11.1",
+    "numpy>=2.2.6",
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pypi", marker = "platform_machine == 'arm64'" },
+    { index = "pytorch-cu130", marker = "platform_machine != 'arm64'" },
+]
+torchvision = [
+    { index = "pypi", marker = "platform_machine == 'arm64'" },
+    { index = "pytorch-cu130", marker = "platform_machine != 'arm64'" },
+]
+torchcodec = [
+    { index = "pypi", marker = "platform_machine == 'arm64'" },
+    { index = "pytorch-cu130", marker = "platform_machine != 'arm64'" },
+]
+
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+line_length = 120
+include_trailing_comma = true
+lines_after_imports = 2
+
+[dependency-groups]
+cuda = [
+    "nvidia-npp>=13.1.2.81",
+]
