@@ -174,7 +174,6 @@ numpy==2.2.6
     #   lerobot
     #   opencv-python-headless
     #   pandas
-    #   smolvla-robustness-test
     #   torchvision
     #   transformers
 nvidia-cublas==13.1.0.3 ; sys_platform == 'linux'

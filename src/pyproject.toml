@@ -11,7 +11,6 @@ dependencies = [
     "torchvision>=0.26.0",
     "ffmpeg>=1.4",
     "torchcodec>=0.11.1",
-    "numpy>=2.2.6",
 ]
 
 [tool.uv.sources]
@@ -49,4 +48,8 @@ lines_after_imports = 2
 [dependency-groups]
 cuda = [
     "nvidia-npp>=13.1.2.81",
+]
+visualization = [
+    "matplotlib>=3.11.2",
+    "seaborn>=0.13.2",
 ]
