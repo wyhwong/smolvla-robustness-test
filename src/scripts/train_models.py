@@ -1,3 +1,4 @@
+import os
 import shutil
 import subprocess
 
@@ -8,18 +9,23 @@ seed_seq = np.random.SeedSequence(42)
 TRAIN_SEEDS = seed_seq.generate_state(3)
 
 POLICY = "lerobot/smolvla_base"
-DATASET_REPO_ID = "lerobot/xarm_lift_medium"
+DATASET_REPO_ID = "lerobot/pusht"
 RENAME = {"observation.image": "observation.images.camera1"}
 RENAME_STR = str(RENAME)
-STEPS = 20_000
+STEPS = 25_650
 SAVE_FREQ = 4_000
 BATCH = 32
 DEVICE_TYPE = "cuda"
-OUT_ROOT = "model_registry"
+MODEL_REGISTRY_DIR = "model_registry"
+
+if not os.path.exists(MODEL_REGISTRY_DIR):
+    os.makedirs(MODEL_REGISTRY_DIR)
 
 for train_seed in TRAIN_SEEDS:
 
     job_name = f"smolvla_{train_seed}"
+    output_dir = f"{MODEL_REGISTRY_DIR}/{job_name}"
+
     train_cmd = [
         shutil.which("lerobot-train"),
         f"--policy.path={POLICY}",
@@ -30,14 +36,18 @@ for train_seed in TRAIN_SEEDS:
         f"--batch_size={BATCH}",
         f"--save_freq={SAVE_FREQ}",
         f"--seed={train_seed}",
-        f"--output_dir={OUT_ROOT}/{job_name}",
+        f"--output_dir={output_dir}",
         f"--job_name={job_name}",
         "--policy.push_to_hub=false",
         "--env_eval_freq=0",
         "--log_freq=100",
         "--wandb.enable=false",
-        "--tolerance_s=0.0005",
     ]
 
     print(f"Training with seed {train_seed}...")
-    subprocess.run(train_cmd, check=True)
+    subprocess.run(
+        train_cmd,
+        check=True,
+        stdout=open(f"{MODEL_REGISTRY_DIR}/{job_name}.log", mode="w", encoding="utf-8"),
+        stderr=subprocess.STDOUT,
+    )

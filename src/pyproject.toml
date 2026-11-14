@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12, <3.13"
 dependencies = [
     "ipykernel>=7.3.0",
-    "lerobot[training,smolvla]==0.6.1",
+    "lerobot[pusht,training,smolvla]==0.6.1",
     "torch>=2.11.0",
     "torchvision>=0.26.0",
     "ffmpeg>=1.4",
