@@ -11,6 +11,7 @@ dependencies = [
     "torchvision>=0.26.0",
     "ffmpeg>=1.4",
     "torchcodec>=0.11.1",
+    "gym-pusht>=0.1.8",
 ]
 
 [tool.uv.sources]

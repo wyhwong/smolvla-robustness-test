@@ -221,3 +221,4 @@ __marimo__/
 
 # training data
 model_registry
+model_evaluation
