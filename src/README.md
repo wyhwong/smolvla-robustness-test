@@ -77,3 +77,4 @@ The overall evaluation time is estimated 11 hours 15 minutes.
 ## Results
 
 We provide the notebooks to reproduce the reported results in the [src/notebooks](./notebooks) folder.
+For details, please refer to the [src/notebooks/README.md](./notebooks//README.md) file.

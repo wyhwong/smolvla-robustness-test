@@ -1,9 +1,32 @@
-# Robustness of Fine-Tuned SmolVLA Policies to Visual Observation Perturbations
+# Probing Visual Robustness in VLA Policies
 
-In this project, we try to use artificial visual observation perturbations to study sim-to-real gap in the context of fine-tuned SmolVLA policies.
+In this project, we study a SmolVLA policy finetuned on the lerobot/pusht dataset
+and evaluated in the PushT simulation environment.
+We evaluate the finetuned policy under clean observations and under three visual observation perturbations,
+each applied at three severity levels.
+This is to study the robustness of the finetuned policy to visual observation perturbations
+through artificially generated perturbations as a runnable proxy for real-world visual perturbations.
+We then report the closed-loop policy success rate under each visual condition
+and analyze robustness through the resulting performance degradation.
+
 The repository contains the code and report for the project.
+The final report could be found in the [TBC](TBC) folder.
 
-## Usage
+Here we provide the examples to demonstrate how the visual perturbations are applied to a sample PushT image:
+
+### Gaussian noise
+
+![Gaussian-noise-injected vision](./assets/perturbation_examples/gaussian_noise_examples.png)
+
+### Blur
+
+![Blur-injected vision](./assets/perturbation_examples/blur_examples.png)
+
+### Brightness shift
+
+![Brightness-shift-injected vision](./assets/perturbation_examples/brightness_shift_examples.png)
+
+## Repository Usage
 
 Please refer to [README.md](./src/README.md) inside `src` folder.
 
