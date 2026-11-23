@@ -10,7 +10,7 @@ We then report the closed-loop policy success rate under each visual condition
 and analyze robustness through the resulting performance degradation.
 
 The repository contains the code and report for the project.
-The final report could be found in the [TBC](TBC) folder.
+The final report could be found at [report/main.pdf](./report/main.pdf).
 
 Here we provide the examples to demonstrate how the visual perturbations are applied to a sample PushT image:
 
